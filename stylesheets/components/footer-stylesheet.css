@@ -1,0 +1,25 @@
+@charset "utf-8";
+
+a {
+	text-decoration: none;
+	color: white;
+	padding-left: 8%;
+}
+
+a:hover {
+	color: #FFD15B;
+}
+
+a:active {
+	color: #FFD15B;
+}
+
+.footer {
+	padding: 2% 0;
+	background-color: #5C2D2D;
+	font-size: 45px;
+}
+
+.sign-in-or-up {
+	float: right;
+}

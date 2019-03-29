@@ -1,0 +1,24 @@
+@charset "utf-8";
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+a:hover {
+	color: #FFD15B;
+}
+
+a:active {
+	color: #FFD15B;
+}
+
+.header {
+	padding: 2% 0;
+	background-color: #5C2D2D;
+	font-size: 45px;
+}
+
+.right {
+	float: right;
+}

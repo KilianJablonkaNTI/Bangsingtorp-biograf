@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+.container {
+	width: 100%;
+}
+
+img {
+	width: 81px; 
+	height: 123px;
+}
+
+.add-movie{
+	float: left;
+}
+
+td {
+	padding: 0 40px 0 40px; 
+}
