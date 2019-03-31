@@ -15,9 +15,14 @@ a:active {
 }
 
 .footer {
+	width: 100%;
 	padding: 2% 0;
+	float: left;
+
 	background-color: #5C2D2D;
-	font-size: 45px;
+
+	font-size: 25px;
+	font-family: sans-serif;
 }
 
 .sign-in-or-up {

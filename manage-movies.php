@@ -21,7 +21,7 @@ if(!isset($_SESSION))
 
 <?php include_once "header.php"; ?>
 
-	<div class="container">
+	<div class="content-container">
 		<div class="add-movie">
 			<label>Movie title</label>
 			<input type="text" id="movieTitle">

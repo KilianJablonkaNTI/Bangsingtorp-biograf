@@ -7,14 +7,15 @@
 	<title>Bängsingtorp biograf</title>
 
 	<?php require "startup.php"; ?>
+
+	<link rel="stylesheet" href="stylesheets/site-specific/movies-stylesheet.css">
+	<script type="text/javascript" src="movies-user-script.js"></script>
 </head>
 
 <?php include_once "header.php"; ?>
 
-	<div class="container">
-		<div>
-			This is the movie page!
-		</div>
+	<div class="content-container">
+		<?php include_once "get-movies-user.php";?>
 	</div>
 
 <?php include_once "footer.php"; ?>
