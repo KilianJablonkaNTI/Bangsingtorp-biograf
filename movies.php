@@ -4,7 +4,7 @@
 
 <head>
 	<meta charset="utf-8"/>
-	<title>Bängsingtorp biograf</title>
+	<title>Movies</title>
 
 	<?php require "startup.php"; ?>
 

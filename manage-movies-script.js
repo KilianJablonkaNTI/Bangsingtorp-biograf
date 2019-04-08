@@ -34,16 +34,9 @@ function sortTable() {
 	}
   }
 }
-
-
-
-$('.deleteCheckbox').click(function() {
-        if (!this.checked) {
-            var sure = confirm("Are you sure?");
-            this.checked = sure;
-      //      $('#textbox1').val(sure.toString());
-        }
-    });
+	
+	//Gets the table with the registerd movies from the database
+	// and inserts it into a div on the site. 
 	$.get("get-movies.php", function(data, status) {
 		$(".movie-table").html(data); 
 		sortTable();
@@ -55,12 +48,14 @@ $('.deleteCheckbox').click(function() {
 		var movieDescription = $("#movieDescription").val();
 		var movieCover = $("#movieCover").prop("files")[0];
 
+		alert(movieCover);
+
 		//Inserts all the values into a form. 
 		var form_data = new FormData();                  
 		form_data.append("movieTitle", movieTitle);	
 		form_data.append("releaseDate", releaseDate);
 		form_data.append("movieDescription", movieDescription);
-		form_data.append("movieCover", movieCover)
+		form_data.append("movieCover", movieCover);
 
 		//Makes a ajax call for the file "addmovie.php" and inserts the movie.         
 		$.ajax({
@@ -76,15 +71,16 @@ $('.deleteCheckbox').click(function() {
 				{
 					alert("Done!");
 
+					//Gets the table with the registerd movies from the database
+					// and inserts it into a div on the site. 
 					$.get("get-movies.php", function(data, status) {
 						$(".movie-table").html(data); 
 					});
+
+					//Call to a function that sorts the table with the movies in it. 
 					sortTable();
 				}
-
-
 				else
-					alert("Fail!");
 					alert(php_script_response);
 		    }
 		});
@@ -103,13 +99,6 @@ $('.deleteCheckbox').click(function() {
 	            searchChange++;
 	        }        
 	    });
-/*
-	    alert(moviesToDel);
-	    $.post("delete-movies.php", 
-	    { moviesToDel: moviesToDel }, 
-	    function(data, status) {
-			alert(data);
-		});*/
 
 		//Inserts all the values into a form. 
 		var form_data = new FormData();                  
@@ -135,21 +124,9 @@ $('.deleteCheckbox').click(function() {
 					});
 					sortTable();
 				}
-
-
 				else
-					alert("Fail!");
 					alert(php_script_response);
 		    }
 		});
-/*
-		for(i = 0; i < amountOfMovies; i++)
-		{
-			if($("#selectMovie" + i).is(":checked"))
-			{	
-
-			}
-
-		} */
 	});
 });

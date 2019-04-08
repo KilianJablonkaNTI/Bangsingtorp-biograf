@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 
 <html>
@@ -20,13 +17,13 @@ session_start();
 		<div>
 			<form action="login.php" method="post">
 				<label>Email</label>
-				<input type="text" name="email-field" id="email-field">
+				<input type="text" name="email-field" id="email-field" required="true">
 				<br><br>
 
 				<label>Password</label>	
-				<input type="password" name="password-field" id="password-field">
+				<input type="password" name="password-field" id="password-field" required="true">
 				<br><br>
-
+				<div> <?php if(isset($_SESSION["loginErr"])){ echo $_SESSION["loginErr"]; $_SESSION["loginErr"] = "";}?></div>
 				<button type="submit" id="login-button">Login</button>
 
 				<a href="#">Reset password</a>

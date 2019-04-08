@@ -7,14 +7,15 @@
 	<title>Bängsingtorp biograf</title>
 
 	<?php require "startup.php"; ?>
+
+	<link rel="stylesheet" href="stylesheets/site-specific/user-startpage-stylesheet.css">
+	<script type="text/javascript" src="user-startpage-script.js"></script>
 </head>
 
 <?php include_once "header.php"?>
 	
-	<div class="container">
-		<div>
-			This is the user startpage!
-		</div>
+	<div class="content-container">
+		<?php include_once "get-vote-poll.php";?>
 	</div>
 
 <?php include_once "footer.php"?>

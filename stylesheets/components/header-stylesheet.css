@@ -1,7 +1,11 @@
 @charset "utf-8";
 
+body {
+	background-color: #FFF3F3;
+}
+
 .container {
-	width: 70%;
+	width: 100%;
 	margin: 0 auto;
 }
 
@@ -31,6 +35,18 @@ a:active {
 	font-family: sans-serif;
 }
 
-.right-bar {
-	float: right;
+.left-bar {
+	width: 20%;
+	float: left;
 }
+
+.middle-bar {
+	width: 60%;
+	float: left;
+}
+
+.right-bar {
+	width: 15%;
+	float: left;
+}
+

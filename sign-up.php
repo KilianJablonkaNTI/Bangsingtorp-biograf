@@ -19,20 +19,22 @@ session_start();
 	<div class="container">
 		<div>
 			<label>Username</label>
-			<input type="text" id="username-field">
+			<input type="text" id="username-field" required="true"><snap id="username-Err"></snap>
 			<br><br>
 
 			<label>Email</label>
-			<input type="text" id="email-field">
+			<input type="text" id="email-field" required="true"><snap id="email-Err"></snap>
 			<br><br>
 
 			<label>Password</label>
-			<input type="password" id="password-field">
+			<input type="password" id="password-field" required="true"><snap id="password-Err"></snap>
 			<br><br>
 
 			<label>Confirm Password</label>
-			<input type="password" id="confirm-password-field">
+			<input type="password" id="confirm-password-field" required="true"><snap id="cpassword-Err"></snap>
 			<br><br>
+
+			<div id="register-success"></div>
 
 			<button type="button" id="register-button">Register</button>
 

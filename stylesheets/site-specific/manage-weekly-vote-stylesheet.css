@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+.selected-movies {
+	float: left;
+	width: 50%;
+} 
+
+.movie-containers {
+	width: 30%;
+	float: left;
+	margin: 2% 2% 2% 2%; 
+	border: solid;
+}
+
+.movie-covers {
+	width: 100%;
+	height: auto;
+}
+
+.movie-table-container {
+	float: left;
+	width: 50%;
+}
+
+.movies-to-select-cover {
+	width: 220px;
+	height: auto;
+}

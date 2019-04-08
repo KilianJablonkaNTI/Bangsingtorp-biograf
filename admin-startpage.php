@@ -13,7 +13,7 @@
 	
 	<div class="container">
 		<div>
-			This is the user start page
+			<?php include_once "get-votes.php"; ?>
 		</div>
 	</div>
 
