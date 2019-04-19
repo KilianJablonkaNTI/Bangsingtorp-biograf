@@ -3,7 +3,6 @@ if(!isset($_SESSION))
 {
 	session_start();
 }
-
 echo "<link rel='stylesheet' href='stylesheets/common/css-reset.css'>";
 echo "<link rel='stylesheet' href='stylesheets/components/header-stylesheet.css'>";
 echo "<link rel='stylesheet' href='stylesheets/components/footer-stylesheet.css'>";
@@ -15,8 +14,4 @@ echo "<script
 	  </script>";
 echo "<script src='https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js'></script>";
 echo '<script type="text/javascript" src="scripts/components/header-script.js"></script>';
-
-echo "<script>";
-echo "var signedInAs = \"". $_SESSION["signed-in-as"] ."\";";
-echo "</script>";
 ?>

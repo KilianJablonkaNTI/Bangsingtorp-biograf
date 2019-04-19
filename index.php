@@ -4,6 +4,6 @@ if(!isset($_SESSION))
 	session_start();
 }
 
-$_SESSION["signed-in-as"] = "not-in";
+$_SESSION["signed-in-as"] = "none";
 
 include_once "startpage.php";

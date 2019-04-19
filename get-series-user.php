@@ -4,7 +4,7 @@ include_once "conn.php";
 
 // Attempt select query execution
 try{
-    $sql = "SELECT * FROM movies";   
+    $sql = "SELECT * FROM series";   
     $result = $pdo->query($sql);
     
     if($result->rowCount() > 0){ ?>
@@ -12,16 +12,16 @@ try{
 
             <?php
             $checkboxEnd = 0;
-            /*A php while loop in which all the existing movies 
+            /*A php while loop in which all the existing series 
                 in the database are insertet into the table.*/
             while($row = $result->fetch()){ 
-            $specialTitle = str_replace(" ", "%", $row["movieTitle"]);
+            $specialTitle = str_replace(" ", "%", $row["seriesTitle"]);
             
-            //Inserts a movie that exists in the database into the table ?>
+            //Inserts a series that exists in the database into the table ?>
 
-            <div class="containers" id="<?php echo $row["movieTitle"];?>" onclick="window.location.href = 'load-movie-or-series.php?page=movies&selectedObject=<?php echo $row["movieTitle"];?>'">
+            <div class="containers" id="<?php echo $row["seriesTitle"];?>" onclick="window.location.href = 'load-movie-or-series.php?page=series&selectedObject=<?php echo $row["seriesTitle"];?>'">
             	<img src="<?php echo $row["coverFilePath"]; ?>" class="covers">
-            	<h3><?php echo $row["movieTitle"]; ?></h3>
+            	<h3><?php echo $row["seriesTitle"]; ?></h3>
             	<p>More info</p>
             </div>
         <?php 

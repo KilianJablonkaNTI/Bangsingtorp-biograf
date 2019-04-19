@@ -2,24 +2,51 @@
 
 include_once "conn.php";
 
-$movieToLoad = $_POST["movieToLoad"];
+$page = $_GET["page"];
+$selectedObject = $_GET["selectedObject"];
 
-$sql = "SELECT movieTitle, releaseDate, movieDescription, coverFilePath FROM movies WHERE $movieToLoad"; 
-$result = $pdo->query($sql);
-
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-        echo "Movie Title: " . $row["movieTitle"]. " - Release date: " . $row["releaseDate"]. " - Movie Description:" . $row["movieDescription"]. "Cover File Path:" .$row["coverFilePath"]. "<br>";
-    }
-} else {
-    echo "0 results";
+if($page == "movies"){
+	$searchTitle = "movieTitle";
+	$searchDescription = "movieDescription";	
+}
+else{
+	$searchTitle = "seriesTitle";
+	$searchDescription = "seriesDescription";
 }
 
-/*
 
-Fel på $movieToLoad och SELECT delen. 
 
-$movieToLoad får inget värde.
+$sql = "SELECT * FROM $page WHERE $searchTitle ='$selectedObject'"; 
 
-*/
+foreach ($pdo->query($sql) as $row) {
+    $title = $row[$searchTitle];
+    $releaseDate = $row['releaseDate'];
+    $description = $row[$searchDescription];
+    $coverFilePath = $row['coverFilePath'];
+}
+?>
+
+<div>
+	<div class="info-header">
+		<img src="<?php echo $coverFilePath; ?>" class="header-img"/>
+
+		<div class="middle-content">
+			<h1><?php echo $title; ?></h1>
+			<p><?php echo $description; ?>
+		</div>
+
+		<div class="general-info">
+			<h2>General</h2>
+			<p>Release date</p>
+			<p><?php echo $releaseDate; ?></p><br>
+
+			<p>Runtime</p>
+			<p>Not available</p><br>
+
+			<p>Runtime</p>		
+			<p>Not available</p>
+
+		</div>
+		
+	</div>
+</div>

@@ -1,3 +1,15 @@
+<?php
+
+if(!isset($_SESSION)){
+	session_start();
+}
+
+if($_SESSION["signed-in-as"] != "user"){
+	include_once "index.php";
+}
+
+else { ?>
+
 <!DOCTYPE html>
 
 <html>
@@ -18,4 +30,4 @@
 		<?php include_once "get-vote-poll.php";?>
 	</div>
 
-<?php include_once "footer.php"?>
+<?php include_once "footer.php"; }?>

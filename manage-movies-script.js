@@ -48,8 +48,6 @@ function sortTable() {
 		var movieDescription = $("#movieDescription").val();
 		var movieCover = $("#movieCover").prop("files")[0];
 
-		alert(movieCover);
-
 		//Inserts all the values into a form. 
 		var form_data = new FormData();                  
 		form_data.append("movieTitle", movieTitle);	
@@ -68,9 +66,8 @@ function sortTable() {
 		    type: "post",
 		    success: function(php_script_response){
 				if(php_script_response == "Done")
-				{
-					alert("Done!");
-
+				{	
+					$("#success-message").text("The movie has bin inserted successfully.");
 					//Gets the table with the registerd movies from the database
 					// and inserts it into a div on the site. 
 					$.get("get-movies.php", function(data, status) {
@@ -80,8 +77,29 @@ function sortTable() {
 					//Call to a function that sorts the table with the movies in it. 
 					sortTable();
 				}
-				else
-					alert(php_script_response);
+				else{
+					//Getting the string with the error messages.
+					var errorMessages = php_script_response;
+
+					//Getting positions.
+					var msgLength = errorMessages.length;
+					var titleErr = errorMessages.search("tErr");
+					var dateErr = errorMessages.search("rErr");
+					var descritptionErr = errorMessages.search("dErr");
+					var imgErr = errorMessages.search("iErr");
+
+					//Getting the error messages. 
+					var titleErrMsg = errorMessages.substring((titleErr + 5), (dateErr - 1));
+					var dateErrMsg = errorMessages.substring((dateErr + 5), (descritptionErr - 1));
+					var descriptionErrMsg = errorMessages.substring((descritptionErr 	 + 5), (imgErr -1));
+					var imgErrMsg = errorMessages.substring((imgErr + 5), (msgLength));
+
+					//Displaying the error messages.
+					$("#title-Err").html(titleErrMsg);
+					$("#date-Err").html(dateErrMsg);
+					$("#description-Err").html(descriptionErrMsg);
+					$("#image-Err").html(imgErrMsg);
+				}
 		    }
 		});
 	});

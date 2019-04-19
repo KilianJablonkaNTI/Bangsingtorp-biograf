@@ -65,7 +65,14 @@ if(empty($_POST["password"])){
     $passErr = "Password requierd.";
 }
 else {
-    $passErr = "";
+    //Converts the special characters in the string. 
+    $password = htmlspecialchars($_POST["password"]);
+    if(strlen($password) < 10) {
+        $passErr = "The password must at least be 10 characters long.";
+    }
+    else {
+        $passErr = "";
+    }
 }
 
 
@@ -77,7 +84,6 @@ else if($_POST["cpassword"] != $_POST["password"]) {
 }
 else {
     //Converts the special characters in the string. 
-    $password = htmlspecialchars($_POST["password"]);
     $cpassword = htmlspecialchars($_POST["cpassword"]);
 
     $cpassErr = "";

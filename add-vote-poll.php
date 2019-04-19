@@ -2,6 +2,21 @@
 
 include_once "conn.php";
 
+//The name of the folder.
+$folder = "images/movies-of-the-week-covers";
+ 
+//Get a list of all of the file names in the folder.
+$files = glob($folder . '/*');
+ 
+//Loop through the file list.
+foreach($files as $file){
+    //Make sure that this is a file and not a directory.
+    if(is_file($file)){
+        //Use the unlink function to delete the file.
+        unlink($file);
+    }
+}
+
 for($i = 0; $i < 4; $i++)
 {	
 	$target_dir = "images/movies-of-the-week-covers/";
@@ -47,7 +62,7 @@ for($i = 0; $i < 4; $i++)
 
 	        $fileSet = true;
 	    }
-	echo $imageFilePath;
+
 	$movieTitle = $_POST["movieTitle".$i];
 
 	//Updates the movies for the vote poll. 
@@ -59,7 +74,8 @@ for($i = 0; $i < 4; $i++)
 	    $stmt->bindParam(":imageFilePath", $imageFilePath);
 
 	    $stmt->execute();
-	    echo "Done";
+
+	    
 
 	} catch(PDOException $e){
 	    die("ERROR: Could not able to execute $sql. " . $e->getMessage());

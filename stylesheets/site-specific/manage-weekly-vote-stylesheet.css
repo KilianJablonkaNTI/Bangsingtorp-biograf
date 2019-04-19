@@ -26,3 +26,12 @@
 	width: 220px;
 	height: auto;
 }
+
+p {
+	float: left;
+}
+
+.unset-button {
+	padding: 0 1% 0 1%;
+	float: right;
+}

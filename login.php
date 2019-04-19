@@ -31,14 +31,14 @@
                     include_once "user-startpage.php";
                 }
             } else {
-                $_SESSION["loginErr"] = "Username and password are not matching.";
+                $_SESSION["loginErr"] = "Email and password are not matching.";
                 include_once "sign-in.php";
             }           
         }
         // Free result set
         unset($result);
     } else{
-        $_SESSION["loginErr"] = "Username and password are not matching.";
+        $_SESSION["loginErr"] = "Email and password are not matching.";
         include_once "sign-in.php";
     }
 } catch(PDOException $e){

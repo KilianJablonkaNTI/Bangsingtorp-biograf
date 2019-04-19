@@ -1,12 +1,12 @@
 <?php
 include_once "conn.php";
 
-//Checks if the movie title field is empty. 
-if(empty($_POST["movieTitle"])){
+//Checks if the series title field is empty. 
+if(empty($_POST["seriesTitle"])){
     $titleErr = "Title requierd.";
 }
 else {
-    $movieTitle = htmlspecialchars($_POST["movieTitle"]);
+    $seriesTitle = htmlspecialchars($_POST["seriesTitle"]);
     $titleErr = "";
 }
 
@@ -25,27 +25,27 @@ else {
     }
 }
 
-//Checks if the movie description field is empty. 
-if(empty($_POST["movieDescription"])){
+//Checks if the series description field is empty. 
+if(empty($_POST["seriesDescription"])){
     $descriptionErr = "Description requierd.";
 }
 else {
-    $movieDescription = htmlspecialchars($_POST["movieDescription"]);
+    $seriesDescription = htmlspecialchars($_POST["seriesDescription"]);
     $descriptionErr = "";
 }
 
 //Checks if a image file has bin selected.
-if(empty($_FILES["movieCover"]["name"])){
+if(empty($_FILES["seriesCover"]["name"])){
     $imgErr = "Image requierd.";
 }
 else{
-    $target_dir = "images/movie-covers/";
-    $target_file = $target_dir . basename($_FILES["movieCover"]["name"]);
+    $target_dir = "images/series-covers/";
+    $target_file = $target_dir . basename($_FILES["seriesCover"]["name"]);
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
     //Cheks if the file is an image. 
     if(isset($_POST["submit"])) {
-        $check = getimagesize($_FILES["movieCover"]["tmp_name"]);
+        $check = getimagesize($_FILES["seriesCover"]["tmp_name"]);
         if($check !== false) {
             $imgErr = "";
         } else {
@@ -59,7 +59,7 @@ else{
     }
 
     // Check file size
-    else if($_FILES["movieCover"]["size"] > 100000) {
+    else if($_FILES["seriesCover"]["size"] > 100000) {
         $imgErr = "The file is to large, maximun file size is: 10MB";
     }
 
@@ -76,16 +76,16 @@ else{
 //Checks if there were no errors. 
 if($titleErr == "" && $dateErr == "" && $descriptionErr == "" && $imgErr == ""){  
     //Uploades the file into the folder "uloaded_images" on the localserver.
-    move_uploaded_file($_FILES["movieCover"]["tmp_name"], "images/movie-covers/" . $_FILES["movieCover"]["name"]);
-    $imageFilePath = "images/movie-covers/" .$_FILES["movieCover"]["name"];        
+    move_uploaded_file($_FILES["seriesCover"]["tmp_name"], "images/series-covers/" . $_FILES["seriesCover"]["name"]);
+    $imageFilePath = "images/series-covers/" .$_FILES["seriesCover"]["name"];        
 
     try{
-        $sql = "INSERT INTO movies (movieTitle, releaseDate, movieDescription, coverFilePath) VALUES (:movieTitle, :releaseDate, :movieDescription, :imageFilePath)";
+        $sql = "INSERT INTO seriess (seriesTitle, releaseDate, seriesDescription, coverFilePath) VALUES (:seriesTitle, :releaseDate, :seriesDescription, :imageFilePath)";
         $stmt = $pdo->prepare($sql);
         
-        $stmt->bindParam(":movieTitle", $movieTitle);
+        $stmt->bindParam(":seriesTitle", $seriesTitle);
         $stmt->bindParam(":releaseDate", $releaseDate);
-        $stmt->bindParam(":movieDescription", $movieDescription);
+        $stmt->bindParam(":seriesDescription", $seriesDescription);
         $stmt->bindParam(":imageFilePath", $imageFilePath);
 
         $stmt->execute();

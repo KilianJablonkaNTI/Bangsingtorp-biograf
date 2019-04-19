@@ -22,21 +22,24 @@ try{
                 <div class="movie-containers" id="movie<?php echo $idEnd; ?>">
                     <img src="<?php echo $row["coverFilePath"]; ?>" class="movie-covers" id="img-VMC<?php echo $idEnd; ?>">
                     <br><input type="file" class="img-upload" id="VMC<?php echo $idEnd; ?>">
-                    <h3 id="movie-title<?php echo $idEnd; ?>"><?php echo $row["movieTitle"]; ?></h3>
+                    <p id="movie-title<?php echo $idEnd; ?>"><?php echo $row["movieTitle"]; ?></p>
+                    <button class="unset-button" id="unset<?php echo $idEnd; ?>"><img src="images/icons/baseline-close-24px.svg"></button>
                 </div>    
     <?php   }
             else 
             { ?>
                 <div class="movie-containers" id="noMovie<?php echo $idEnd; ?>">
-                    <img src="images/movies-of-the-week-covers/no-img-selected.jpg" class="movie-covers" id="img-VMC<?php echo $idEnd; ?>">
+                    <img src="images/no-image-selected.jpg" class="movie-covers" id="img-VMC<?php echo $idEnd; ?>">
                     <br><input type="file" class="img-upload" id="VMC<?php echo $idEnd; ?>">
-                    <h3 id="movie-title<?php echo $idEnd; ?>">No movie selected</h3>
+                    <p id="movie-title<?php echo $idEnd; ?>">No movie selected</p>
+                    <button class="unset-button" id="unset<?php echo $idEnd; ?>"><img src="images/icons/baseline-close-24px.svg"></button>
                 </div>  
     <?php   }
             $idEnd++;
          }?>
 
-         <button type="button" id="creatPollButton">Creat vote poll</button>
+         <button type="button" id="creatPollButton">Creat vote poll</button><br>
+         <button type="button" id="deletePollButton">Delete vote poll</button>
      </div>
          <?php
         // Free result set

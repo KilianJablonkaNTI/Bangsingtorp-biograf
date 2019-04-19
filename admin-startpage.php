@@ -1,3 +1,15 @@
+<?php
+
+if(!isset($_SESSION)){
+	session_start();
+}
+
+if($_SESSION["signed-in-as"] != "admin"){
+	include_once "index.php";
+}
+
+else { ?>
+
 <!DOCTYPE html>
 
 <html>
@@ -17,4 +29,4 @@
 		</div>
 	</div>
 
-<?php include_once "footer.php"?>
+<?php include_once "footer.php"; }?>
