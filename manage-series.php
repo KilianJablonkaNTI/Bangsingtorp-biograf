@@ -21,7 +21,7 @@ else { ?>
 
 	<?php require "startup.php"; ?>
 
-	<link rel='stylesheet' href='stylesheets/site-specific/manage-series-stylesheet.css'>
+	<link rel='stylesheet' href='stylesheets/site-specific/manage-movies-series-stylesheet.css'>
 	<script type="text/javascript" src="manage-series-script.js"></script>
 	
 </head>
@@ -29,27 +29,27 @@ else { ?>
 <?php include_once "header.php"; ?>
 
 	<div class="content-container">
-		<div class="add-series">
+		<div class="add-movies-series">
 			<label>Series title</label>
-			<input type="text" id="seriesTitle"><snap id="title-Err"></snap>
+			<input type="text" class="data-elements" id="seriesTitle"><span class="error-holders" id="title-Err"></span>
 			<br><br>
 
 			<label>Releas date</label>
-			<input type="text" id="releaseDate"><snap id="date-Err"></snap>
+			<input type="text" class="data-elements" id="releaseDate"><span class="error-holders" id="date-Err"></span>
 			<br><br>
 
 			<label>Series description</label>
-			<input type="text" id="seriesDescription"><snap id="description-Err"></snap>
+			<textarea class="data-elements" id="seriesDescription"></textarea><span class="error-holders" id="description-Err"></span>
 			<br><br>
 
 			<label>Cover picture</label>
-			<input type="file" id="seriesCover"><snap id="image-Err"></snap>
+			<input type="file" class="data-elements" id="seriesCover"><span class="error-holders" id="image-Err"></span>
 			<br><br>
-			<p id="success-message"></p>
-			<button type="button" id="add-series-button">Add series</button>
+
+			<button type="button" id="add-series-button">Add series</button><span id="success-message"></span>
 		</div>
-		<div>
-			<button type="button" id="deleteseriessButton">Delete</button>
+		<div class="movies-series-table">
+			<button type="button" id="delete-series-button">Delete</button><span id="delete-message"></span><br>
 			<div class="series-table"></div>
 		</div>
 

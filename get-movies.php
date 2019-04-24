@@ -13,10 +13,9 @@ try{
         <table id="movieTable">        
             <tr class="movies-info">
                 <th></th>
-                <th>Title</th>
-                <th>Release date</th>
-                <th>Description</th>
-                <th>Cover</th>          
+                <th></th>
+                <th>Title & release date</th>
+                <th>Description</th>          
             </tr>
 
             <?php
@@ -28,10 +27,12 @@ try{
             //Inserts a movie that exists in the database into the table ?>
             <tr class="movies">
                 <td><input type="checkbox" class="deleteCheckbox" id="selectMovie<?php echo $checkboxEnd; ?>" value="<?php echo $row["movieTitle"]; ?>">
-                <td class="sortByTitle"><?php echo $row["movieTitle"]; ?></td>
-                <td><?php echo $row["releaseDate"]; ?></td>
-                <td><?php echo $row["movieDescription"]; ?></td>
                 <td><img src="<?php echo $row["coverFilePath"]; ?>"></td>
+                <td>
+                    <h2 class="title sortByTitle"><?php echo $row["movieTitle"]; ?></h2>
+                    <p class="releaseDate"><?php echo $row["releaseDate"]; ?></p>
+                </td>
+                <td><?php echo $row["movieDescription"]; ?></td>
             </tr>
         <?php 
             $checkboxEnd++;

@@ -42,6 +42,11 @@ function sortTable() {
 		sortTable();
 	});
 	
+	//Unsets the delete message.
+	$("#delete-series-button").focusout(function() {
+		$("#delete-message").html("");
+	});
+
 	$("#add-series-button").click(function() {
 		var seriesTitle = $("#seriesTitle").val();
 		var releaseDate = $("#releaseDate").val();
@@ -68,14 +73,20 @@ function sortTable() {
 				if(php_script_response == "Done")
 				{	
 					$("#success-message").text("The series has bin inserted successfully.");
+
+					//Reseting all fields.
+					$(".data-elements").val("");
+					//Reseting all the error messages
+					$(".error-holders").html("");
+
 					//Gets the table with the registerd series from the database
 					// and inserts it into a div on the site. 
 					$.get("get-series.php", function(data, status) {
 						$(".series-table").html(data); 
-					});
 
-					//Call to a function that sorts the table with the series in it. 
-					sortTable();
+						//Call to a function that sorts the table with the series in it. 
+						sortTable();
+					});
 				}
 				else{
 					//Getting the string with the error messages.
@@ -105,9 +116,7 @@ function sortTable() {
 	});
 
 
-	$("#deleteseriesButton").click(function() {
-
-		var amountOfseries = $(".deleteCheckbox").length;
+	$("#delete-series-button").click(function() {
 		var seriesToDel = ",";
 		var searchChange = 0;
 	    $('input.deleteCheckbox[type=checkbox]').each(function () {
@@ -118,33 +127,40 @@ function sortTable() {
 	        }        
 	    });
 
-		//Inserts all the values into a form. 
-		var form_data = new FormData();                  
-		form_data.append("seriesToDel", seriesToDel);
-		form_data.append("amountToDel", searchChange);
+	    if(searchChange == 0)
+	    	$("#delete-message").html("There are no series selected to delete.");
 
-		//Makes a ajax call for the file "insertUser.php" and inserts the user.         
-		$.ajax({
-		    url: "delete-series.php",  
-		    dataType: "text",  
-		    cache: false,
-		    contentType: false,
-		    processData: false,
-		    data: form_data,                         
-		    type: "post",
-		    success: function(php_script_response){
-				if(php_script_response == "OK")
-				{
-					alert("Done!");
+	    else{
+			//Inserts all the values into a form. 
+			var form_data = new FormData();               
+			form_data.append("movieOrSeries", "series");   
+			form_data.append("toDelete", seriesToDel);
+			form_data.append("amountToDel", searchChange);
 
-					$.get("get-series.php", function(data, status) {
-						$(".series-table").html(data); 
-					});
-					sortTable();
-				}
-				else
-					alert(php_script_response);
-		    }
-		});
+			//Makes a ajax call for the file "insertUser.php" and inserts the user.         
+			$.ajax({
+			    url: "delete-movie-or-series.php",  
+			    dataType: "text",  
+			    cache: false,
+			    contentType: false,
+			    processData: false,
+			    data: form_data,                         
+			    type: "post",
+			    success: function(php_script_response){
+					if(php_script_response == "success")
+					{
+						$("#delete-message").html("The selected objects have bin deleted.");
+
+						$.get("get-series.php", function(data, status) {
+							$(".series-table").html(data); 
+
+							sortTable();
+						});
+					}
+					else
+						alert(php_script_response);
+			    }
+			});
+		}
 	});
 });

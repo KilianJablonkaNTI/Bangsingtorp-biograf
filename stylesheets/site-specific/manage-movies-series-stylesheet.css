@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+img {
+	width: 81px; 
+	height: 123px;
+}
+
+.add-movies-series{
+	width:50%;
+	float: left;
+	position: relative;
+	box-sizing: border-box;
+	padding: 10px 0 10px 10px; 
+}
+
+.movies-series-table{
+	width: 50%;
+	float: left;
+}
+
+td {
+	width: 25%; 
+}

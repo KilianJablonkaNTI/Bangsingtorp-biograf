@@ -38,8 +38,8 @@ try{
             $idEnd++;
          }?>
 
-         <button type="button" id="creatPollButton">Creat vote poll</button><br>
-         <button type="button" id="deletePollButton">Delete vote poll</button>
+         <button type="button" id="creatPollButton" class="edit-poll-buttons">Creat vote poll</button><br>
+         <button type="button" id="deletePollButton" class="edit-poll-buttons">Delete vote poll</button>
      </div>
          <?php
         // Free result set

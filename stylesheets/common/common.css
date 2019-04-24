@@ -1,0 +1,100 @@
+@charset "utf-8";
+
+/*Color variables*/
+:root{
+	--red-dark3: #350909;
+	--red-dark2: #4C1A1A;
+	--red-dark1: #5C2D2D;
+	--red-light3: #7E4F4F;
+	--red-light2: #AC7474;
+	--red-light1: #FFF3F3;
+
+	--hover-gellow: #FFD15B;
+}
+
+.container{
+	font-family: 'Roboto Condensed', sans-serif;
+	height: 100%;
+}
+
+/*The css for all textboxes*/
+input[type=text]{
+	width: 30%;
+	
+	font-size: 18px;
+	color: var(--red-dark1);
+
+	border: solid;
+	border-width: 1px;
+	border-radius: 5px;
+	border-color: var(--red-dark1);
+}
+
+/*The css for all passwordfields*/
+input[type=password]{
+	width:30%;
+
+	font-size: 18px;
+	color: var(--red-dark1);
+
+	border: solid;
+	border-width: 1px;
+	border-radius: 5px;
+	border-color: var(--red-dark1);
+}
+
+/*The css for all textareas*/
+textarea{
+	width: 50%;
+	height: 250px;
+	resize: none;
+
+	border: solid;
+	border-width: 1px;
+	border-radius: 5px;
+	border-color: var(--red-dark1);
+
+	font-family: 'Roboto Condensed', sans-serif;
+	color: var(--red-dark1);
+}
+
+/*The css fot all labels*/
+label{
+	display: block;
+	width: 50%;
+	font-size: 20px;
+	color: var(--red-dark3);
+}
+
+/*The css for all buttons*/
+button{
+	width: 150px;
+	height: 35px;
+	background-color: var(--red-dark2);
+
+	font-size: 18px;
+	color: white;
+
+	border: solid;
+	border-radius: 5px;
+	border-color: var(--red-dark2);
+
+	cursor: pointer;
+}
+
+/*The hover effect for all buttons*/
+button:hover{
+	color: var(--hover-gellow);
+}
+
+/*The css for all the snaps/holders for the error messages*/
+span{
+	font-size: 20px;
+	color: red;
+
+	margin-left: 5px;
+}
+
+p{
+	color: var(--red-dark1);
+}

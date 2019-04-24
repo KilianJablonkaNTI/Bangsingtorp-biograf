@@ -42,6 +42,12 @@ function sortTable() {
 		sortTable();
 	});
 	
+	//Unsets the delete message.
+	$("#delete-movie-button").focusout(function() {
+		$("#delete-message").html("");
+	});
+
+
 	$("#add-movie-button").click(function() {
 		var movieTitle = $("#movieTitle").val();
 		var releaseDate = $("#releaseDate").val();
@@ -67,15 +73,22 @@ function sortTable() {
 		    success: function(php_script_response){
 				if(php_script_response == "Done")
 				{	
+					//A message that appears if the movie was added succesfully.
 					$("#success-message").text("The movie has bin inserted successfully.");
+					
+					//Reseting all fields.
+					$(".data-elements").val("");
+					//Reseting all the error messages
+					$(".error-holders").html("");
+
 					//Gets the table with the registerd movies from the database
 					// and inserts it into a div on the site. 
 					$.get("get-movies.php", function(data, status) {
 						$(".movie-table").html(data); 
-					});
 
-					//Call to a function that sorts the table with the movies in it. 
-					sortTable();
+						//Call to a function that sorts the table with the movies in it. 
+						sortTable();
+					});
 				}
 				else{
 					//Getting the string with the error messages.
@@ -105,9 +118,7 @@ function sortTable() {
 	});
 
 
-	$("#deleteMoviesButton").click(function() {
-
-		var amountOfMovies = $(".deleteCheckbox").length;
+	$("#delete-movie-button").click(function() {
 		var moviesToDel = ",";
 		var searchChange = 0;
 	    $('input.deleteCheckbox[type=checkbox]').each(function () {
@@ -118,33 +129,43 @@ function sortTable() {
 	        }        
 	    });
 
-		//Inserts all the values into a form. 
-		var form_data = new FormData();                  
-		form_data.append("moviesToDel", moviesToDel);
-		form_data.append("amountToDel", searchChange);
+	    if(searchChange == 0)
+	    	$("#delete-message").html("There are no movies selected to delete.");
 
-		//Makes a ajax call for the file "insertUser.php" and inserts the user.         
-		$.ajax({
-		    url: "delete-movies.php",  
-		    dataType: "text",  
-		    cache: false,
-		    contentType: false,
-		    processData: false,
-		    data: form_data,                         
-		    type: "post",
-		    success: function(php_script_response){
-				if(php_script_response == "OK")
-				{
-					alert("Done!");
+	    else{
+			//Inserts all the values into a form. 
+			var form_data = new FormData();          
+			form_data.append("movieOrSeries", "movie");        
+			form_data.append("toDelete", moviesToDel);
+			form_data.append("amountToDel", searchChange);
 
-					$.get("get-movies.php", function(data, status) {
-						$(".movie-table").html(data); 
-					});
-					sortTable();
-				}
-				else
-					alert(php_script_response);
-		    }
-		});
+			//Makes a ajax call for the file "insertUser.php" and inserts the user.         
+			$.ajax({
+			    url: "delete-movie-or-series.php",  
+			    dataType: "text",  
+			    cache: false,
+			    contentType: false,
+			    processData: false,
+			    data: form_data,                         
+			    type: "post",
+			    success: function(php_script_response){
+					if(php_script_response == "success")
+					{
+						$("#delete-message").html("The selected objects have bin deleted.");
+
+						//Getting the updated table.
+						$.get("get-movies.php", function(data, status) {
+							$(".movie-table").html(data); 
+
+							//Calling the functions the sorts the table.
+							sortTable();
+						});
+
+					}
+					else
+						alert(php_script_response);
+			    }
+			});
+		}
 	});
 });

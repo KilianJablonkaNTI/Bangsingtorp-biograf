@@ -6,6 +6,8 @@ if(!isset($_SESSION))
 echo "<link rel='stylesheet' href='stylesheets/common/css-reset.css'>";
 echo "<link rel='stylesheet' href='stylesheets/components/header-stylesheet.css'>";
 echo "<link rel='stylesheet' href='stylesheets/components/footer-stylesheet.css'>";
+echo "<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto+Condensed'>";
+echo "<link rel='stylesheet' href='stylesheets/common/common.css'>";
 
 echo "<script 
 		src='https://code.jquery.com/jquery-3.3.1.js'

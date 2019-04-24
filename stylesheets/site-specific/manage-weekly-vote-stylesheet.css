@@ -32,6 +32,18 @@ p {
 }
 
 .unset-button {
-	padding: 0 1% 0 1%;
+	padding: 0;
+	width: 40px;
+	height: 40px;
 	float: right;
+}
+
+.edit-poll-buttons{
+	width: 180px;
+	height: 35px;
+}
+
+img{
+	width: 37px;
+	height: 37px;
 }

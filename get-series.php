@@ -13,10 +13,9 @@ try{
         <table id="seriesTable">        
             <tr class="series-info">
                 <th></th>
-                <th>Title</th>
-                <th>Release date</th>
-                <th>Description</th>
-                <th>Cover</th>          
+                <th></th>
+                <th>Title & release date</th>
+                <th>Description</th>        
             </tr>
 
             <?php
@@ -27,11 +26,13 @@ try{
             
             //Inserts a series that exists in the database into the table ?>
             <tr class="series">
-                <td><input type="checkbox" class="deleteCheckbox" id="selectseries<?php echo $checkboxEnd; ?>" value="<?php echo $row["seriesTitle"]; ?>">
-                <td class="sortByTitle"><?php echo $row["seriesTitle"]; ?></td>
-                <td><?php echo $row["releaseDate"]; ?></td>
-                <td><?php echo $row["seriesDescription"]; ?></td>
+                <td><input type="checkbox" class="deleteCheckbox" id="selectSeries<?php echo $checkboxEnd; ?>" value="<?php echo $row["seriesTitle"]; ?>">
                 <td><img src="<?php echo $row["coverFilePath"]; ?>"></td>
+                <td>
+                    <h2 class="title sortByTitle"><?php echo $row["seriesTitle"]; ?></h2>
+                    <p class="releaseDate"><?php echo $row["releaseDate"]; ?></p>
+                </td>
+                <td><?php echo $row["seriesDescription"]; ?></td>
             </tr>
         <?php 
             $checkboxEnd++;
