@@ -3,16 +3,42 @@ include_once "conn.php";
 
 //Checks if the series title field is empty. 
 if(empty($_POST["seriesTitle"])){
-    $titleErr = "Title requierd.";
+    $titleErr = "Title required.";
 }
 else {
     $seriesTitle = htmlspecialchars($_POST["seriesTitle"]);
-    $titleErr = "";
+
+    try{
+       $sql = "SELECT * FROM series";   
+       $result = $pdo->query($sql);
+       
+       if($result->rowCount() > 0){
+           $seriesExist = false;
+
+           while($row = $result->fetch()){ 
+               if($row["seriesTitle"] == $seriesTitle) {
+                   $seriesExist = true;
+               }
+           }
+           unset($result);
+
+           if($seriesExist == true) {
+               $titleErr = "This title is already used.";
+           }
+           else {
+               $titleErr = "";
+           }
+       } else{ 
+               $titleErr = "";
+       }
+    } catch(PDOException $e){
+       die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+    }
 }
 
 //Checks if the release date field is empty.
 if(empty($_POST["releaseDate"])){
-    $dateErr = "Release date requierd.";
+    $dateErr = "Release date required.";
 }
 else {
     $releaseDate = htmlspecialchars($_POST["releaseDate"]);
@@ -27,7 +53,7 @@ else {
 
 //Checks if the series description field is empty. 
 if(empty($_POST["seriesDescription"])){
-    $descriptionErr = "Description requierd.";
+    $descriptionErr = "Description required.";
 }
 else {
     $seriesDescription = htmlspecialchars($_POST["seriesDescription"]);
@@ -36,7 +62,7 @@ else {
 
 //Checks if a image file has bin selected.
 if(empty($_FILES["seriesCover"]["name"])){
-    $imgErr = "Image requierd.";
+    $imgErr = "Image required.";
 }
 else{
     $target_dir = "images/series-covers/";

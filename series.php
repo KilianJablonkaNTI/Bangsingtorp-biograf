@@ -5,7 +5,7 @@ if(!isset($_SESSION)){
 }
 
 if($_SESSION["signed-in-as"] != "user"){
-	include_once "index.php";
+	header("Location: index.php");
 }
 
 else { ?>
@@ -25,7 +25,7 @@ else { ?>
 <?php include_once "header.php"; ?>
 
 	<div class="container">
-		<div>
+		<div class="content-container">
 			<form action="load-in-movie-or-series.php" id="series">
 				<?php include_once "get-series-user.php";?>
 			</form>

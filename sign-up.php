@@ -17,29 +17,30 @@ session_start();
 <?php include_once "header.php"?>
 	
 	<div class="container">
-		<div>
+		<div class="content-container">
 			<label>Username</label>
-			<input type="text" id="username-field" placeholder="Firstname Lastname"><snap id="username-Err"></snap>
+			<input type="text" id="username-field" placeholder="Firstname Lastname"><span class="error-holders" id="username-Err"></span>
 			<br><br>
 
 			<label>Email</label>
-			<input type="text" id="email-field"><snap id="email-Err"></snap>
+			<input type="text" id="email-field" placeholder="example@example.com"><span class="error-holders" id="email-Err"></span>
 			<br><br>
 
 			<label>Password</label>
-			<input type="password" id="password-field"><snap id="password-Err"></snap>
+			<input type="password" id="password-field" placeholder="10 characters minimum"><span class="error-holders" id="password-Err"></span>
 			<br><br>
 
 			<label>Confirm Password</label>
-			<input type="password" id="confirm-password-field"><snap id="cpassword-Err"></snap>
+			<input type="password" id="confirm-password-field" placeholder="Repeat password"><span class="error-holders" id="cpassword-Err"></span>
 			<br><br>
-
-			<div id="register-success"></div>
 
 			<button type="button" id="register-button">Sign up</button>
 
-			<a href="sign-in.php">Already registerd?</a>
+			<a class="container-links" href="sign-in.php">Already registerd?</a>
 
+			<div>
+				<div class="success-holders close-holders" id="register-success"></div><img class="close-btn-img" id="close-suc-msg" src="images/icons/baseline-close-24px.svg">
+			</div>
 		</div>
 	</div>
 

@@ -1,35 +1,23 @@
 @charset "utf-8";
 
-body {
-	background-color: #FFF3F3;
-}
-
-.container {
-	width: 100%;
-	margin: 0 auto;
-}
-
-.content-container{
-	width: 100%;
-	float: left;	
-}
-
-a {
+.bar-links {
 	text-decoration: none;
 	color: white;
+	margin-left: 8%;
 }
 
-a:hover {
+.bar-links:hover {
 	color: #FFD15B;
 }
 
-a:active {
+.bar-links:active {
 	color: #FFD15B;
 }
 
 .header {
 	width: 100%;	
-	padding: 2% 0 2% 0;
+	padding: 1.5% 0;
+	float: left;
 	background-color: #5C2D2D;
 	font-size: 25px;
 }

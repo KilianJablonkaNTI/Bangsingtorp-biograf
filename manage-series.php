@@ -5,7 +5,7 @@ if(!isset($_SESSION)){
 }
 
 if($_SESSION["signed-in-as"] != "admin"){
-	include_once "index.php";
+	header("Location: index.php");
 }
 
 else { ?>
@@ -22,7 +22,9 @@ else { ?>
 	<?php require "startup.php"; ?>
 
 	<link rel='stylesheet' href='stylesheets/site-specific/manage-movies-series-stylesheet.css'>
-	<script type="text/javascript" src="manage-series-script.js"></script>
+	<link rel='stylesheet' href='stylesheets/components/table-stylesheet.css'>
+	<script type="text/javascript" src="scripts/components/sort-table.js"></script>
+	<script type="text/javascript" src="scripts/site-specific/manage-series-script.js"></script>
 	
 </head>
 
@@ -46,10 +48,10 @@ else { ?>
 			<input type="file" class="data-elements" id="seriesCover"><span class="error-holders" id="image-Err"></span>
 			<br><br>
 
-			<button type="button" id="add-series-button">Add series</button><span id="success-message"></span>
+			<button type="button" id="add-series-button">Add series</button><span class="success-holders" id="add-suc-msg"></span>
 		</div>
 		<div class="movies-series-table">
-			<button type="button" id="delete-series-button">Delete</button><span id="delete-message"></span><br>
+			<button type="button" id="delete-series-button">Delete</button><span class="success-holders" id="delete-suc-msg"></span><span class="error-holders" id="delete-err-msg"></span><br><br>
 			<div class="series-table"></div>
 		</div>
 

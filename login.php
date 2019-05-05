@@ -23,23 +23,23 @@
                 if($row["ID"] == 1)
                 {
                     $_SESSION["signed-in-as"] = "admin";
-                    include_once "admin-startpage.php";    
+                    header("Location: admin-startpage.php");    
                 }
                 else
                 {
                     $_SESSION["signed-in-as"] = "user";
-                    include_once "user-startpage.php";
+                    header("Location: user-startpage.php");
                 }
             } else {
                 $_SESSION["loginErr"] = "Email and password are not matching.";
-                include_once "sign-in.php";
+                header("Location: sign-in.php");
             }           
         }
         // Free result set
         unset($result);
     } else{
         $_SESSION["loginErr"] = "Email and password are not matching.";
-        include_once "sign-in.php";
+        header("Location: sign-in.php");
     }
 } catch(PDOException $e){
     die("ERROR: Could not able to execute $sql. " . $e->getMessage());

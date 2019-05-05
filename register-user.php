@@ -35,7 +35,7 @@ else{
                     $emailErr = "";
                 }
             } else{ 
-                    $emailErr = "Database error DB-EMPTY.";
+                    $emailErr = "DB-Empty";
             }
         } catch(PDOException $e){
             die("ERROR: Could not able to execute $sql. " . $e->getMessage());
@@ -89,7 +89,7 @@ else {
     $cpassErr = "";
 }
 
-if($emailErr == "" && $nameErr == "" && $passErr == "" && $cpassErr == ""){
+if($emailErr == "" || $emailErr == "DB-Empty" && $nameErr == "" && $passErr == "" && $cpassErr == ""){
     $passErr = "";
     $userRegisterd = false;
     $passwordDB = password_hash($password,PASSWORD_DEFAULT);

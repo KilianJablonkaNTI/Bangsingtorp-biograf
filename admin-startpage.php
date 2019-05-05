@@ -5,7 +5,7 @@ if(!isset($_SESSION)){
 }
 
 if($_SESSION["signed-in-as"] != "admin"){
-	include_once "index.php";
+	header("Location: index.php");
 }
 
 else { ?>
@@ -19,13 +19,16 @@ else { ?>
 	<title>Bängsingtorp biograf</title>
 
 	<?php require "startup.php"; ?>
+	<link rel="stylesheet" type="text/css" href="stylesheets/components/table-stylesheet.css">
 </head>
 
 <?php include_once "header.php"?>
 	
 	<div class="container">
-		<div>
-			<?php include_once "get-votes.php"; ?>
+		<div class="content-container">
+			<div class="left-container">
+				<?php include_once "get-votes.php"; ?>
+			</div>
 		</div>
 	</div>
 

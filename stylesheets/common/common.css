@@ -9,12 +9,40 @@
 	--red-light2: #AC7474;
 	--red-light1: #FFF3F3;
 
+	--info-header-red: rgba(92, 45, 45, 0.15);
+
 	--hover-gellow: #FFD15B;
+
+	--success-green: #33a057;
+	--error-red: #cc2020;
+}
+
+body {
+	background-color: #FFF3F3;
 }
 
 .container{
 	font-family: 'Roboto Condensed', sans-serif;
-	height: 100%;
+	min-height: 100%;
+}
+
+.content-container{
+	float: left;
+	width: 96%;
+	min-height: 555px;
+	padding: 1% 2% 1% 2%;
+}
+
+.left-container{
+	width: 50%;
+
+	float: left;
+}
+
+.right-container{
+	width: 50%;
+
+	float: left;
 }
 
 /*The css for all textboxes*/
@@ -66,35 +94,57 @@ label{
 	color: var(--red-dark3);
 }
 
-/*The css for all buttons*/
-button{
-	width: 150px;
-	height: 35px;
-	background-color: var(--red-dark2);
 
+p { 
 	font-size: 18px;
-	color: white;
-
-	border: solid;
-	border-radius: 5px;
-	border-color: var(--red-dark2);
-
-	cursor: pointer;
+	color: var(--red-dark1);
 }
 
-/*The hover effect for all buttons*/
-button:hover{
-	color: var(--hover-gellow);
+h1 {
+	margin: 10px 0 10px 0;
+
+	font-size: 30px;
+	color: var(--red-dark2);
 }
 
-/*The css for all the snaps/holders for the error messages*/
-span{
+h2 {
+	margin: 10px 0 10px 0;
+
+	font-size: 25px;
+	font-weight: bold;
+	color: var(--red-dark2);
+}
+
+h3 {
+	margin: 5px 0 5px 0;
+
 	font-size: 20px;
-	color: red;
+	font-weight: bold;
+	color: var(--red-dark2);
+}
+
+/*The css for all the spans/holders for the error or success messages*/
+.error-holders{
+	font-size: 20px;
+	color: var(--error-red);
 
 	margin-left: 5px;
 }
 
-p{
-	color: var(--red-dark1);
+.success-holders{
+	font-size: 20px;
+	color: var(--success-green);
+
+	margin-left: 5px;
 }
+
+.close-holders {
+	float: left;
+}
+
+.movies-to-select-cover {
+	width: 220px;
+	height: auto;
+}
+
+

@@ -1,5 +1,11 @@
 $(document).ready(function(){
 
+	$("#close-suc-msg").hide();
+
+	$("#close-suc-msg").click(function() {
+		$("#register-success").html("");
+		$("#close-suc-msg").hide();		
+	});
 
 	$("#register-button").click(function() {
 		var username = $("#username-field").val();
@@ -25,12 +31,10 @@ $(document).ready(function(){
 		    type: "post",
 		    success: function(php_script_response){
 				if(php_script_response == "Done") {
-					$("#register-success").html("Account successfully register.");
+					$(".error-holders").html("");
 
-					$("#username-field").val("");
-					$("#email-field").val("");
-					$("#password-field").val("");
-					$("#confirm-password-field").val("");
+					$("#register-success").html("Account successfully register.");
+					$("#close-suc-msg").show();
 				}
 				else{
 					//Getting the string with the error messages.

@@ -13,7 +13,8 @@ try{
     $stmt->bindParam(":movieTitle", $movieTitle);
 
     $stmt->execute();
-    echo "Done";
+
+    include_once "get-vote-poll.php";
 
 } catch(PDOException $e){
     die("ERROR: Could not able to execute $sql. " . $e->getMessage());

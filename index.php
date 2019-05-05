@@ -6,4 +6,4 @@ if(!isset($_SESSION))
 
 $_SESSION["signed-in-as"] = "none";
 
-include_once "startpage.php";
+header("Location: startpage.php");

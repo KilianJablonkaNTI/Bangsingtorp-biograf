@@ -14,7 +14,7 @@
 <?php include_once "header.php"?>
 
 	<div class="container">
-		<div>
+		<div class="content-container">
 			<form action="login.php" method="post">
 				<label>Email</label>
 				<input type="text" name="email-field" id="email-field" required="true">
@@ -23,10 +23,12 @@
 				<label>Password</label>	
 				<input type="password" name="password-field" id="password-field" required="true">
 				<br><br>
-				<div> <?php if(isset($_SESSION["loginErr"])){ echo $_SESSION["loginErr"]; $_SESSION["loginErr"] = "";}?></div>
+				
 				<button type="submit" id="login-button">Login</button>
 
-				<a href="#">Reset password</a>
+				<a class="container-links" href="#">Reset password</a><br><br>
+
+				<div class="error-holders"> <?php if(isset($_SESSION["loginErr"])){ echo $_SESSION["loginErr"]; $_SESSION["loginErr"] = "";}?></div>
 			</form>
 		</div>
 	</div>

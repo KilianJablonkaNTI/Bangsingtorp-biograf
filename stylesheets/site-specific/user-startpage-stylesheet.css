@@ -1,7 +1,10 @@
 @charset "utf-8";
 
-.movies-to-vote {
-	width: 35%;
+.movie-container {
+	width: 80%;
+
+	float: left;
+	margin-top: 2%;
 }
 
 .movie-containers {
@@ -11,16 +14,25 @@
 	margin: 0 0 0 0;
 }
 
+.movie-containers .vote-text{
+	position: relative;
+	top: 50%;
+	visibility: hidden;
+}
+
 .movie-covers {
 	width: 100%;
 	height: auto;
+
 	position: relative;
 	float: left;
+
+	cursor: pointer;
 }
 
 .movie-covers:hover {
 	transform: scale(1.05, 1.05);
-	filter: blur(2px);
+	z-index: 4;
 }
 
 .voted-img {
@@ -32,3 +44,7 @@
 	width: 220px;
 	height: auto;
 }	
+
+.voted-movie{
+	width: 50%;
+}

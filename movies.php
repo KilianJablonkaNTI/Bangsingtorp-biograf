@@ -5,7 +5,7 @@ if(!isset($_SESSION)){
 }
 
 if($_SESSION["signed-in-as"] != "user"){
-	include_once "index.php";
+	header("Location: index.php");
 }
 
 else { ?>
@@ -21,7 +21,7 @@ else { ?>
 	<?php require "startup.php"; ?>
 
 	<link rel="stylesheet" href="stylesheets/site-specific/movies-stylesheet.css">
-	<script type="text/javascript" src="movies-user-script.js"></script>
+	<script type="text/javascript" src="scripts/site-specific/movies-user-script.js"></script>
 </head>
 
 <?php include_once "header.php"; ?>

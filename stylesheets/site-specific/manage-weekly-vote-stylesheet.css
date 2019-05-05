@@ -2,13 +2,21 @@
 
 .selected-movies {
 	float: left;
-	width: 50%;
+	width: 70%;
 } 
 
+.selected-movies-container{
+	width: 100%;
+}
+
+.button-container{
+	width: 100%;
+}
+
 .movie-containers {
-	width: 30%;
+	width: 20%;
 	float: left;
-	margin: 2% 2% 2% 2%; 
+	margin: 0 2% 2% 0; 
 	border: solid;
 }
 
@@ -19,7 +27,11 @@
 
 .movie-table-container {
 	float: left;
-	width: 50%;
+	width: 30%;
+}
+
+#movie-table{
+	width: 100%;
 }
 
 .movies-to-select-cover {

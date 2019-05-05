@@ -3,16 +3,42 @@ include_once "conn.php";
 
 //Checks if the movie title field is empty. 
 if(empty($_POST["movieTitle"])){
-    $titleErr = "Title requierd.";
+    $titleErr = "Title required.";
 }
 else {
     $movieTitle = htmlspecialchars($_POST["movieTitle"]);
-    $titleErr = "";
+
+    try{
+        $sql = "SELECT * FROM movies";   
+        $result = $pdo->query($sql);
+        
+        if($result->rowCount() > 0){
+            $movieExist = false;
+
+            while($row = $result->fetch()){ 
+                if($row["movieTitle"] == $movieTitle) {
+                    $movieExist = true;
+                }
+            }
+            unset($result);
+
+            if($movieExist == true) {
+                $titleErr = "This title is already used.";
+            }
+            else {
+                $titleErr = "";
+            }
+        } else{ 
+                $titleErr = "";
+        }
+    } catch(PDOException $e){
+        die("ERROR: Could not able to execute $sql. " . $e->getMessage());
+    }
 }
 
 //Checks if the release date field is empty.
 if(empty($_POST["releaseDate"])){
-    $dateErr = "Release date requierd.";
+    $dateErr = "Release date required.";
 }
 else {
     $releaseDate = htmlspecialchars($_POST["releaseDate"]);
@@ -27,7 +53,7 @@ else {
 
 //Checks if the movie description field is empty. 
 if(empty($_POST["movieDescription"])){
-    $descriptionErr = "Description requierd.";
+    $descriptionErr = "Description required.";
 }
 else {
     $movieDescription = htmlspecialchars($_POST["movieDescription"]);
@@ -36,7 +62,7 @@ else {
 
 //Checks if a image file has bin selected.
 if(empty($_FILES["movieCover"]["name"])){
-    $imgErr = "Image requierd.";
+    $imgErr = "Image required.";
 }
 else{
     $target_dir = "images/movie-covers/";

@@ -10,12 +10,12 @@
 			<?php if($_SESSION["signed-in-as"] == "none"){ ?> 
 				<div class="start-header">
 					<div class="left-bar">
-						<a href="startpage.php">Bängsingtorp biograf</a>
+						<a class="bar-links" href="startpage.php">Bängsingtorp biograf</a>
 					</div>
 
-					<div class="right-bar">
-						<a href="sign-in.php">Sign in</a>
-						<a href="sign-up.php">Sign up</a>	
+					<div class="" lass="right-bar">
+						<a class="bar-links" href="sign-in.php">Sign in</a>
+						<a class="bar-links" href="sign-up.php">Sign up</a>	
 					</div>
 				</div>
 			<?php }?>
@@ -23,16 +23,16 @@
 			<?php if($_SESSION["signed-in-as"] == "user"){ ?>
 				<div class="user-header">
 					<div class="left-bar">
-						<a href="user-startpage.php">Bängsingtorp biograf</a>
+						<a class="bar-links" href="user-startpage.php">Bängsingtorp biograf</a>
 					</div>
 
 					<div class="middle-bar">
-						<a href="movies.php">Movies</a>
-						<a href="series.php">Series</a>
+						<a class="bar-links" href="movies.php">Movies</a>
+						<a class="bar-links" href="series.php">Series</a>
 					</div>
 
 					<div class="right-bar">
-						<a href="index.php">Sign out</a>
+						<a class="bar-links" href="index.php">Sign out</a>
 					</div>
 				</div>
 			<?php }?>
@@ -40,17 +40,17 @@
 			<?php if($_SESSION["signed-in-as"] == "admin"){ ?>
 				<div class="admin-header">
 					<div class="left-bar">
-						<a href="admin-startpage.php">Bängsingtorp biograf</a>
+						<a class="bar-links" href="admin-startpage.php">Bängsingtorp biograf</a>
 					</div>
 
 					<div class="middle-bar">
-						<a href="manage-weekly-vote.php">Weekly vote</a>
-						<a href="manage-movies.php">Manage movies</a>
-						<a href="manage-series.php">Manage series</a>
+						<a class="bar-links" href="manage-weekly-vote.php">Weekly vote</a>
+						<a class="bar-links" href="manage-movies.php">Manage movies</a>
+						<a class="bar-links" href="manage-series.php">Manage series</a>
 					</div>
 
 					<div class="right-bar">
-						<a href="index.php">Sign out</a>
+						<a class="bar-links" href="index.php">Sign out</a>
 					</div>
 				</div>
 			<?php }?>

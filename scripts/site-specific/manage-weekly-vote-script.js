@@ -1,15 +1,18 @@
 $(document).ready(function() {
-	
+
+	//Calls a function which sorts the tabel with the movies.
+	sortTable(); 
+
 	//A function that checks if a vote poll has bin created.
 	function doesPollExist()
 	{	
-		var doesPollExist = 0;
+		var existAmount = 0;
 
 		for(i = 0; i < 4; i++)
 		{
-			if($("#movie-title"+i).text() != "" && $("#movie-title"+i).text() != "No movie selected")
+			if($("#movie-title"+i).text() != "No movie selected")
 			{
-				doesPollExist++;
+				existAmount++;
 
 				//Checks all the check-boxes which the 
 				//value of one of the movies of the week
@@ -17,12 +20,10 @@ $(document).ready(function() {
 				  if($(this).val() == $("#movie-title"+ i).text())
 				  	$(this).prop("checked", true);
 				});
-
-
 			}	
 		}
 
-		if(doesPollExist == 4)
+		if(existAmount == 4)
 		{
 			return true;		
 		}
@@ -31,21 +32,24 @@ $(document).ready(function() {
 	}
 
 	var existsPoll = doesPollExist();
-	var edited = false;
+	var selectedAmount = 0;
+
+	function existsPollAction(){
+		if(existsPoll == true)
+		{
+			//A variable that contains the amount of movies selected.
+			selectedAmount = 4;
+		}
+		else
+		{
+			//A variable that contains the amount of movies selected.
+			selectedAmount = 0;
+		}
+	}
+
+	existsPollAction();
 	
-	if(existsPoll == true)
-	{
-		//A variable that contains the amount of movies selected.
-		var selectedAmount = 4;
-		var edit = true;
-		$("#creatPollButton").html("Update vote poll");
-	}
-	else
-	{
-		//A variable that contains the amount of movies selected.
-		var selectedAmount = 0;
-		var edit = false;
-	}
+
 
 	//If the admin selects a movie form the movie tabel the following code will be executed.
 	$(".selectCheckbox").click(function() {
@@ -106,8 +110,8 @@ $(document).ready(function() {
 			//If there are already 4 movies selected the following code will be executed. 
 			else
 			{		
-				//Alerts a message.
-				alert("There are already four movies selected.");
+				//Shows a message.
+				$("#select-err-msg").html("There are already four movies selected.");
 				//Unchecks the checkbox which the admin clicked on.
 				$("#" + id).prop("checked", false);
 			}
@@ -127,11 +131,16 @@ $(document).ready(function() {
 			  if($(this).val()== $("#movie-title"+ idEnd).text())
 			    this.checked = !this.checked;
 			});
+/*
+			updateTitles.push($("#movie-title"+ idEnd).html());
+			updateIDs.push("movie-title" + idEnd); */
 
 			//Set the value of the movie the admin wants to unset to the start value.
 			$("#movie-title"+ idEnd).html("No movie selected");
 			//Sets the cover image to the start one.
 			$("#img-VMC" + idEnd).attr("src", "images/no-image-selected.jpg");
+
+			$("#VMC" + idEnd).prop("type", "file");
 
 			existsPoll = false;
 			selectedAmount--;
@@ -162,39 +171,31 @@ $(document).ready(function() {
 
 
 
-    $("#creatPollButton").click(function() {
+    $("#createPollButton").click(function() {
+
     	if(selectedAmount == 4 && existsPoll == false)
     	{	
     		var form_data = new FormData();
 
-    		//Inserts all the values into a form. 
-    		/*
-    		for(i = 0; i < 4; i++)
-    		{
-    			var coverFilePath = $("#VMC"+i).prop("files")[0];
-    			alert(coverFilePath);
-    			form_data.append("movieTitle"+i, $("#movie-title"+i).text());
-    			form_data.append(coverFilePath);
-    			alert($("#movie-title"+i).text());
-
-    		} */
-
+    		//Getting all the images files. 
     		var cover0 = $("#VMC0").prop("files")[0];
     		var cover1 = $("#VMC1").prop("files")[0];
     		var cover2 = $("#VMC2").prop("files")[0];
     		var cover3 = $("#VMC3").prop("files")[0];
 
+    		//Inserting all the titles into a form.
     		form_data.append("movieTitle0", $("#movie-title0").text());
     		form_data.append("movieTitle1", $("#movie-title1").text());
     		form_data.append("movieTitle2", $("#movie-title2").text());
     		form_data.append("movieTitle3", $("#movie-title3").text());
 
+    		//Inserting all the images into a form.
     		form_data.append("movieCover0", cover0);
     		form_data.append("movieCover1", cover1);
     		form_data.append("movieCover2", cover2);
     		form_data.append("movieCover3", cover3);
 
-    		//Makes a ajax call for the file "insertUser.php" and inserts the user.         
+    		//Makes a ajax call for the file "add-vote-poll.php" and inserts the user.         
     		$.ajax({
     		    url: "add-vote-poll.php",  
     		    dataType: "text",  
@@ -204,44 +205,87 @@ $(document).ready(function() {
     		    data: form_data,                         
     		    type: "post",
     		    success: function(php_script_response){
-    				if(php_script_response == "Done")
-    				{
-    					alert("Done!");
+    				if(php_script_response == "success")
+    				{	
+    					//Displaying the success message.
+    					$("#add-Suc").html("The vote poll has bin added successfully.");
+
+    					existsPoll = doesPollExist();
     				}
-    				else
-    					alert(php_script_response);
+    				else{
+    					//Getting the string with the error messages.
+    					var errorMessages = php_script_response;
+
+    					//Getting positions.
+    					var msgLength = errorMessages.length;
+    					var titleErr = errorMessages.search("tErr");
+    					var imgErr = errorMessages.search("iErr");
+
+    					//Getting the error messages. 
+    					var titleErrMsg = errorMessages.substring((titleErr + 5), (imgErr - 1));
+    					var imgErrMsg = errorMessages.substring((imgErr + 5), (msgLength));
+
+    					//Displaying the error messages.
+    					$("#add-Err").html(titleErrMsg + "\n" + imgErrMsg);
+    				}
     		    }
     		});
   	  	}
   	  	else if(existsPoll == true){
-  	  		alert("A poll already exists and you have not made any changes.");
+  	  		$("#add-Err").html("A poll already exists.");
   	  	}
   	  	else
   	  	{
-  	  		alert("You have not selected four movies!");
+  	  		$("#add-Err").html("You have not selected four movies.");
   	  	} 
     });
 
     
     $("#deletePollButton").click(function() {
-    	alert("Click");
     	if(existsPoll == true){
+
     		//Calls the php document which deletes the movies of the week.
     		$.get("delete-vote-poll.php", function(data) {
     			$(".content-container").html(data);
-    		});
-    		$("#selectCheckbox").prop("checked", false);
-    		selectedAmount = 0;
-    		existsPoll = false;
+	    		
+	    		existsPoll = doesPollExist();
 
+	    		if(existsPoll == false){
+	    			$("#selectCheckbox").prop("checked", false);
 
-			alert(existsPoll);
-			alert(selectedAmount);
+	    			selectedAmount = 0;
+
+	    			$("#delete-Suc").html("The vote poll has bin deleted successfully.");
+	    		}
+	    		else{
+	    			$("#delete-Err").html("Something went wrong try again.");	
+	    		}
+			});
+
     	}
     	else{
-    		alert("There is no poll to delete.");
+    		$("#delete-Err").html("There is no poll to delete.");
     	}
     });
 	
+    $(".selectCheckbox").focusout(function() {
+    	$("#select-err-msg").html("");
+    });
+
+    $("#createPollButton").focusout(function() {
+    	$("#add-Err").html("");
+    });
+
+    $("#createPollButton").focusout(function() {
+    	$("#add-Suc").html("");
+    });
+
+    $("#deletePollButton").focusout(function() {
+    	$("#delete-Err").html("");
+    });
+
+    $("#deletePollButton").focusout(function() {
+    	$("#delete-Suc").html("");
+    });
 
 });

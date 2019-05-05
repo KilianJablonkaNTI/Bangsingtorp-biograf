@@ -4,11 +4,11 @@
 
 <head>
 	<meta charset="utf-8"/>
-	<title><?php echo $_GET["movieToLoad"]?></title>
+	<title><?php echo $_GET["selectedObject"]?></title>
 
 	<?php require "startup.php"; ?>
 
-	<link rel="stylesheet" href="stylesheets/site-specific/movies-stylesheet.css">
+	<link rel="stylesheet" href="stylesheets/site-specific/load-movie-or-series-stylesheet.css">
 	<script type="text/javascript" src="movies-user-script.js"></script>
 </head>
 

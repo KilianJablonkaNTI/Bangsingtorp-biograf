@@ -1,0 +1,57 @@
+@charset "utf-8";
+
+table{
+	width: 100%;
+	max-height: 580px;
+	display: block;
+	overflow: auto;
+}
+
+tbody tr:nth-child(even){
+	background-color: var(--info-header-red);
+}
+
+th{
+	padding: 5px 5px 5px 5px;
+	background-color: var(--info-header-red);
+
+	text-align: left;
+	font-size: 22px;
+	font-weight: bold;
+	color: var(--red-dark3);
+}
+
+td {
+	vertical-align: top;
+	padding: 5px 5px 5px 5px;
+	font-size: 18px; 
+}
+
+
+.movies .series{
+	margin: 0 0 0 0;
+}
+
+.table-checkbox {
+	width: 5%;
+}
+
+.table-cover-holder {
+	max-width: 20%;
+}
+
+.table-covers {
+	width: auto;
+}
+
+.table-title-and-date {
+	width: 28%;
+}
+
+.table-description {
+	width: 47%;	
+}
+
+.votes-table {
+	width: 40%;
+}

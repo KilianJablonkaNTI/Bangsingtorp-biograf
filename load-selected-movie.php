@@ -28,22 +28,25 @@ foreach ($pdo->query($sql) as $row) {
 
 <div>
 	<div class="info-header">
-		<img src="<?php echo $coverFilePath; ?>" class="header-img"/>
+		<div class="img-holder">
+			<img src="<?php echo $coverFilePath; ?>" class="header-img"/>	
+		</div>
+		
 
-		<div class="middle-content">
+		<div class="header-middle">
 			<h1><?php echo $title; ?></h1>
 			<p><?php echo $description; ?>
 		</div>
 
 		<div class="general-info">
 			<h2>General</h2>
-			<p>Release date</p>
+			<h3>Release date</h3>
 			<p><?php echo $releaseDate; ?></p><br>
 
-			<p>Runtime</p>
+			<h3>Runtime</h3>
 			<p>Not available</p><br>
 
-			<p>Runtime</p>		
+			<h3>Runtime</h3>		
 			<p>Not available</p>
 
 		</div>

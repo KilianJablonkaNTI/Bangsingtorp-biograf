@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+#to-vote-btn{
+	padding: 0 5px 0 5px;
+
+	border: solid;
+	border-width: 1px;
+	border-radius: 3px;
+
+	font-size: 20px;
+}
+
+.vote-poll-header{
+	margin-bottom: 10px;
+}
