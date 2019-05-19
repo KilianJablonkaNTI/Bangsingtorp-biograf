@@ -36,7 +36,7 @@ else { ?>
 			<input type="text" class="data-elements" id="movieTitle"><span class="error-holders" id="title-Err"></span>
 			<br><br>
 
-			<label>Releas date</label>
+			<label>Release date</label>
 			<input type="text" class="data-elements" id="releaseDate"><span class="error-holders" id="date-Err"></span>
 			<br><br>
 

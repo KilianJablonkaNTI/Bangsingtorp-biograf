@@ -16,5 +16,3 @@ echo "<script
 		integrity='sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60='
 		crossorigin='anonymous'>
 	  </script>";
-echo "<script src='https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js'></script>";
-echo '<script type="text/javascript" src="scripts/components/header-script.js"></script>';

@@ -21,15 +21,17 @@ else { ?>
 	<?php require "startup.php"; ?>
 
 	<link rel="stylesheet" href="stylesheets/site-specific/movies-stylesheet.css">
-	<script type="text/javascript" src="scripts/site-specific/movies-user-script.js"></script>
 </head>
 
 <?php include_once "header.php"; ?>
 
 	<div class="content-container">
-		<form action="load-in-movie-or-series.php" id="movie">
-			<?php include_once "get-movies-user.php";?>
-		</form>
+		<div class="left-container">
+			<form action="load-in-movie-or-series.php" id="movie">
+				<?php include_once "get-movies-user.php";?>
+			</form>	
+		</div>
+		<div class="right-container"></div>
 	</div>
 
 <?php include_once "footer.php"; }?>

@@ -26,9 +26,12 @@ else { ?>
 
 	<div class="container">
 		<div class="content-container">
-			<form action="load-in-movie-or-series.php" id="series">
-				<?php include_once "get-series-user.php";?>
-			</form>
+			<div class="left-container">
+				<form action="load-in-movie-or-series.php" id="series">
+					<?php include_once "get-series-user.php";?>
+				</form>
+			</div>
+			<div class="right-container"></div>
 		</div>
 	</div>
 

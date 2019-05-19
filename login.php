@@ -1,8 +1,8 @@
 <?php
 	include_once "conn.php";
 
-	$_SESSION["email"] = $_POST["email-field"];
-	$password = $_POST["password-field"];
+	$_SESSION["email"] = htmlspecialchars($_POST["email-field"]);
+	$password = htmlspecialchars($_POST["password-field"]);
 
   try{
     $sql = "SELECT * FROM users WHERE email ='".$_SESSION["email"]."'"; 

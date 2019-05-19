@@ -47,7 +47,7 @@ $(document).ready(function(){
 				if(php_script_response == "Done")
 				{	
 					//A message that appears if the movie was added succesfully.
-					$("#add-suc-msg").text("The movie has bin inserted successfully.");
+					$("#add-suc-msg").text("The movie has been inserted successfully.");
 					
 					//Reseting all fields.
 					$(".data-elements").val("");
@@ -66,6 +66,7 @@ $(document).ready(function(){
 				else{
 					//Getting the string with the error messages.
 					var errorMessages = php_script_response;
+					alert(errorMessages);
 
 					//Getting positions.
 					var msgLength = errorMessages.length;
@@ -124,7 +125,7 @@ $(document).ready(function(){
 			    success: function(php_script_response){
 					if(php_script_response == "success")
 					{
-						$("#delete-suc-msg").html("The selected objects have bin deleted.");
+						$("#delete-suc-msg").html("The selected objects have been deleted.");
 
 						//Getting the updated table.
 						$.get("get-movies.php", function(data, status) {

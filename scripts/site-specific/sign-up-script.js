@@ -20,7 +20,7 @@ $(document).ready(function(){
 		form_data.append("password", password);
 		form_data.append("cpassword", cpassword);
 
-		//Makes a ajax call for the file "insertUser.php" and inserts the user.         
+		//Makes a ajax call for the file "register-user.php" and inserts the user.         
 		$.ajax({
 		    url: "register-user.php",  
 		    dataType: "text",  

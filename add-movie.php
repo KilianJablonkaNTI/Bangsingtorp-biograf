@@ -85,8 +85,8 @@ else{
     }
 
     // Check file size
-    else if($_FILES["movieCover"]["size"] > 10485760) {
-        $imgErr = "The file is to large, maximun file size is: 10MB";
+    else if($_FILES["movieCover"]["size"] > 4194304) {
+        $imgErr = "The file is to large, maximum file size is: 10MB";
     }
 
     // Allow certain file formats

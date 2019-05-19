@@ -15,7 +15,6 @@ else{
 }
 
 
-
 $sql = "SELECT * FROM $page WHERE $searchTitle ='$selectedObject'"; 
 
 foreach ($pdo->query($sql) as $row) {
@@ -35,7 +34,7 @@ foreach ($pdo->query($sql) as $row) {
 
 		<div class="header-middle">
 			<h1><?php echo $title; ?></h1>
-			<p><?php echo $description; ?>
+			<p><?php echo $description; ?></p>
 		</div>
 
 		<div class="general-info">

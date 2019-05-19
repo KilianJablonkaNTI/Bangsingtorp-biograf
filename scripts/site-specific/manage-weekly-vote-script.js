@@ -208,7 +208,7 @@ $(document).ready(function() {
     				if(php_script_response == "success")
     				{	
     					//Displaying the success message.
-    					$("#add-Suc").html("The vote poll has bin added successfully.");
+    					$("#add-Suc").html("The vote poll has been added successfully.");
 
     					existsPoll = doesPollExist();
     				}

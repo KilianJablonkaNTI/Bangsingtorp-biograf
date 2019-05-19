@@ -3,7 +3,7 @@ include_once "conn.php";
 
 //Checks if the email field isnt empty.
 if(empty($_POST["email"])){
-    $emailErr = "Email is requierd.";
+    $emailErr = "Email is required.";
 }
 else{
     //Converts the special characters in the string. 
@@ -45,7 +45,7 @@ else{
 
 //Checks if the username field isnt empty.
 if(empty($_POST["username"])){
-    $nameErr = "Username requierd.";
+    $nameErr = "Username required.";
 }
 else{
     //Converts the special characters in the string. 
@@ -62,7 +62,7 @@ else{
 
 //Checks if the password field isn't empty.
 if(empty($_POST["password"])){
-    $passErr = "Password requierd.";
+    $passErr = "Password required.";
 }
 else {
     //Converts the special characters in the string. 
@@ -77,7 +77,7 @@ else {
 
 
 if(empty($_POST["cpassword"])){
-    $cpassErr = "Confirm password requierd.";    
+    $cpassErr = "Confirm password required.";    
 }
 else if($_POST["cpassword"] != $_POST["password"]) {
     $cpassErr = "Passwords not matching.";   
@@ -89,7 +89,7 @@ else {
     $cpassErr = "";
 }
 
-if($emailErr == "" || $emailErr == "DB-Empty" && $nameErr == "" && $passErr == "" && $cpassErr == ""){
+if($emailErr == "" && $nameErr == "" && $passErr == "" && $cpassErr == "" || $emailErr == "DB-Empty" && $nameErr == "" && $passErr == "" && $cpassErr == ""){
     $passErr = "";
     $userRegisterd = false;
     $passwordDB = password_hash($password,PASSWORD_DEFAULT);
@@ -136,10 +136,3 @@ if($emailErr == "" || $emailErr == "DB-Empty" && $nameErr == "" && $passErr == "
 else{
     echo "eErr:" .$emailErr. ",nErr:" .$nameErr. ",pErr:" .$passErr. ",cErr:" . $cpassErr;
 }
-
-
-
-
-
-
-
