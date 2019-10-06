@@ -10,7 +10,7 @@ Apache Apache version 2.4.37 (Win32)
 Mysql version 15.1 Distrib 10.1.37-MariaDB (Win32).
 
 
-The project does also contain a database file which contains the database for the homepage in the last stable state. The database does also contain a vote pull for the users to vote and a admin account and eight user accounts. The emails and passwords to login are the following:
+The project does also contain a database file called “myguests-sql” which contains the database for the homepage in the last stable state. The database does also contain a vote pull for the users to vote and a admin account and eight user accounts. The emails and passwords to login are the following:
 
 Admin account
 Email: admin@admin.com
