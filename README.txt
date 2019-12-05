@@ -9,43 +9,4 @@ Xamppserver version 7.3.1
 Apache Apache version 2.4.37 (Win32) 
 Mysql version 15.1 Distrib 10.1.37-MariaDB (Win32).
 
-
-The project does also contain a database file called “myguests-sql” which contains the database for the homepage in the last stable state. The database does also contain a vote pull for the users to vote and a admin account and eight user accounts. The emails and passwords to login are the following:
-
-Admin account
-Email: admin@admin.com
-Password: a5d4m3i2n1
-
-User account 1
-Email: test@user1.com 
-Password: password10
-
-User account 2
-Email: test@user2.com 
-Password: password11
-
-User account 3
-Email: test@user3.com 
-Password: password12
-
-User account 4
-Email: test@user4.com 
-Password: password13
-
-User account 5
-Email: test@user5.com 
-Password: password14
-
-User account 6
-Email: test@user6.com 
-Password: password15
-
-User account 7
-Email: test@user7.com 
-Password: password16
-
-User account 8
-Email: test@user8.com 
-Password: password17
-
-If you have any questions regarding the homepage or have problems setting it up then feel free to email me at: kilian.jablonka@live.com 
+If you have any questions regarding the project then feel free to email me at: kilian.jablonka@live.com. 
